@@ -1,0 +1,12 @@
+
+- hosts: localhost
+  tasks:
+  - name: ensure git is at the latest version
+    yum: name=git state=latest
+    become: yes
+    become_method: sudo
+  - name: get repoFrom git
+    git: repo=https://github.com/AreliFallach/myrepo.git dest=~/myrepo clone=yes update=yes
+  - name: get petClinic from Git
+    git: repo=https://github.com/AreliFallach/spring-petclinic.git dest=~/petClinic clone=yes update=yes
+
