@@ -6,7 +6,10 @@
     become: yes
     become_method: sudo
   - name: get repoFrom git
-    git: repo=https://github.com/AreliFallach/myrepo.git dest=~/myrepo clone=yes update=yes
+    git: repo=https://github.com/AreliFallach/myrepo.git dest=~/myrepo clone=yes update=no
   - name: get petClinic from Git
-    git: repo=https://github.com/AreliFallach/spring-petclinic.git dest=~/petClinic clone=yes update=yes
-
+    git: repo=https://github.com/AreliFallach/spring-petclinic.git dest=~/petClinic clone=yes update=no
+  - name: create Maven folder
+    file: path=~/maven state=directory mode=0755      
+  - name: unarcive maven
+    unarchive: src=http://apache.mivzakim.net/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz dest=~/maven copy=no
